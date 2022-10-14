@@ -5,10 +5,11 @@ import { clsx } from "clsx";
 export interface TextProps {
     size?: "sm" | "md" | "lg";
     children: ReactNode;
-    asChield: boolean;
+    asChield?: boolean;
+    className?: string;
 }
 
-export function Text({ size = "md", children, asChield }: TextProps) {
+export function Text({ size = "md", children, asChield, className }: TextProps) {
     const Component = asChield ? Slot : "span"
     return(
         <Component
@@ -18,7 +19,8 @@ export function Text({ size = "md", children, asChield }: TextProps) {
                     "text-xs": size === "sm",
                     "text-sm": size === "md",
                     "text-md": size === "lg",
-                }
+                },
+                className
             )}
         >
             { children }
